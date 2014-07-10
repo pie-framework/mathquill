@@ -558,6 +558,15 @@ var DiacriticAbove = P(MathCommand, function(_, super_) {
 LatexCmds.vec = bind(DiacriticAbove, '\\vec', '&rarr;', ['vec(', ')']);
 LatexCmds.tilde = bind(DiacriticAbove, '\\tilde', '~', ['tilde(', ')']);
 
+var Abs =
+LatexCmds.abs = P(MathCommand, function(_) {
+  _.ctrlSeq = '\\abs';
+  _.htmlTemplate =
+      '<span class="mq-abs mq-non-leaf">&0</span>'
+  ;
+  _.textTemplate = ['|', '|'];
+});
+
 function DelimsMixin(_, super_) {
   _.jQadd = function() {
     super_.jQadd.apply(this, arguments);
