@@ -196,6 +196,8 @@ suite("latex", function() {
   test('miscellaneous symbols', function() {
     assertParsesLatex('\\xrightarrow{xyz}');
     assertParsesLatex('\\xleftarrow{123}');
+    assertParsesLatex('\\parallelogram ');
+    assertParsesLatex('\\circledot ');
     assertParsesLatex('"');
   });
 

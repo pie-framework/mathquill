@@ -239,6 +239,8 @@ LatexCmds.spadesuit = bind(VanillaSymbol, "\\spadesuit ", "&#9824;");
 //not real LaTex command see https://github.com/mathquill/mathquill/pull/552 for more details
 LatexCmds.parallelogram = bind(VanillaSymbol, "\\parallelogram ", "&#9649;");
 LatexCmds.square = bind(VanillaSymbol, "\\square ", "&#11036;");
+LatexCmds.parallelogram = bind(VanillaSymbol, '\\parallelogram ', '&#9649;');
+LatexCmds.circledot = bind(VanillaSymbol, '\\circledot ', '&#8857;');
 
 //variable-sized
 LatexCmds.oint = bind(VanillaSymbol, "\\oint ", "&#8750;");
