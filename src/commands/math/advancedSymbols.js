@@ -242,6 +242,9 @@ LatexCmds.square = bind(VanillaSymbol, "\\square ", "&#11036;");
 LatexCmds.parallelogram = bind(VanillaSymbol, '\\parallelogram ', '&#9649;');
 LatexCmds.circledot = bind(VanillaSymbol, '\\circledot ', '&#8857;');
 LatexCmds.middot = bind(VanillaSymbol, '\\middot ', '&middot;');
+LatexCmds.dottedsquare = bind(VanillaSymbol, '\\dottedsquare ', '&#11034;');
+LatexCmds.square = bind(VanillaSymbol, '\\square ', '&#11036;');
+LatexCmds.rectangle = bind(VanillaSymbol, '\\rectangle ', '&#9647;');
 
 //variable-sized
 LatexCmds.oint = bind(VanillaSymbol, "\\oint ", "&#8750;");
