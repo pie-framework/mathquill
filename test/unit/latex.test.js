@@ -203,6 +203,9 @@ suite("latex", function() {
     assertParsesLatex('\\dottedsquare ');
     assertParsesLatex('\\square ');
     assertParsesLatex('\\rectangle ');
+    assertParsesLatex('\\overline{xyz}');
+    assertParsesLatex('\\overleftarrow{123}');
+    assertParsesLatex('\\overrightarrow{abc}');
   });
 
   suite('public API', function() {
