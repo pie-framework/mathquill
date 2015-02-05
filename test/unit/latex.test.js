@@ -212,6 +212,10 @@ suite("latex", function() {
     assertParsesLatex('\\lrnsquaredexponent{a}', 'a^2');
     assertParsesLatex('\\lrnsubscript{a}{b}', 'a_b');
     assertParsesLatex('\\longdiv{x}');
+    assertParsesLatex('\\mug ');
+    assertParsesLatex('\\mus ');
+    assertParsesLatex('\\mum ');
+    assertParsesLatex('\\muL ');
   });
 
   suite('public API', function() {

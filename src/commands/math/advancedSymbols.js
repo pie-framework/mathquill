@@ -272,6 +272,12 @@ LatexCmds.closecurlybrace = LatexCmds.rbrace = bind(
 LatexCmds.lbrack = bind(VanillaSymbol, "[");
 LatexCmds.rbrack = bind(VanillaSymbol, "]");
 
+//microunits
+LatexCmds.mug = bind(VanillaSymbol, '\\mug ', 'µg');
+LatexCmds.mus = bind(VanillaSymbol, '\\mus ', 'µs');
+LatexCmds.mum = bind(VanillaSymbol, '\\mum ', 'µm');
+LatexCmds.muL = bind(VanillaSymbol, '\\muL ', 'µL');
+
 //various symbols
 LatexCmds.slash = bind(VanillaSymbol, "/");
 LatexCmds.vert = bind(VanillaSymbol, "|");
