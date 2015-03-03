@@ -216,6 +216,8 @@ suite("latex", function() {
     assertParsesLatex('\\mus ');
     assertParsesLatex('\\mum ');
     assertParsesLatex('\\muL ');
+    assertParsesLatex('\\underset{under}{over}');
+    assertParsesLatex('\\underset{\\sim }{over}');
   });
 
   suite('public API', function() {
