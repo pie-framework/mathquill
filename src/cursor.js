@@ -272,6 +272,15 @@ var Cursor = P(Point, function(_) {
       return this.depth() + (offset || 0) > this.options.maxDepth;
     }
   };
+  _.howDeep = function() {
+    var parents = 0, node = this;
+    while (node = node.parent) { parents++; }
+    return 1 + Math.floor(parents/2);
+  };
+  _.tooDeep = function() {
+    var max = this.options.maxDepth;
+    return max && this.howDeep() > max;
+  };
 });
 
 var Selection = P(Fragment, function(_, super_) {

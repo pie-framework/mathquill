@@ -451,7 +451,10 @@ var MathBlock = P(MathElement, function(_, super_) {
       return VanillaSymbol(ch);
   };
   _.write = function(cursor, ch) {
-    var cmd = this.chToCmd(ch, cursor.options);
+    var cmd;
+    // preventing creating too many nested symbols
+    if (cursor.tooDeep()) return false;
+    cmd = this.chToCmd(ch, cursor.options);
     if (cursor.selection) cmd.replaces(cursor.replaceSelection());
     if (!cursor.isTooDeep()) {
       cmd.createLeftOf(cursor.show());
