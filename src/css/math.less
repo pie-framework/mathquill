@@ -624,27 +624,32 @@
   }
 
   .mq-matrix {
+    vertical-align: middle;
+    margin-left: 0.1em;
+    margin-right: 0.1em;
+
+    table {
+      width: auto;
+      border-bottom: none;
+      border-spacing: 3px;
+      border-collapse: separate;
+      &.mq-rows-1 { /* better alignment when there's just one row */
         vertical-align: middle;
-        margin-left: 0.1em;
-        margin-right: 0.1em;
-
-        table {
-          width: auto;
-          border-bottom: none;
-          border-spacing: 3px;
-       border-collapse: separate;&.mq-rows-1 { /* better alignment when there's just one row */
-            vertical-align: middle;
-            margin-bottom: 1px;
-          }
-        }
-
-        td {
-          border: 1px dotted #ffffff;
-          width: auto; /* defensive resets */
-          padding: 0.1em 0.3em;
-          vertical-align: baseline;
-        }
+        margin-bottom: 1px;
       }
+    }
+
+    td {
+      border: 1px dotted #ffffff;
+      width: auto; /* defensive resets */
+      padding: 0.1em 0.3em;
+      vertical-align: baseline;
+
+      &.mq-empty {
+        border: 1px dotted black;
+      }
+    }
+  }
 
   &, .mq-editable-field {
     cursor: text;
