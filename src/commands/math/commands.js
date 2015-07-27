@@ -131,6 +131,41 @@ var LongDivisionStyle = P(MathCommand, function(_, super_) {
   };
 });
 
+var EditMatrixRowStyle = P(MathCommand, function(_, super_) {
+    _.init = function(ctrlSeq, tagName, attrs) {
+        super_.init.call(this, ctrlSeq, '<span class="mq-matrix">'
+            + '<span class="mq-paren mq-scaled">[</span>'
+                + '<span class="matrix-edit-content-row">'
+                    + '<p>' + attrs + '</p>'
+                    + '<table class="mq-non-leaf mq-rows-3"><tbody>'
+                        + '<tr><td class="mq-empty"></td>'
+                        + '<td class="mq-empty"></td>'
+                        + '<td class="mq-empty"></td></tr>'
+                    + '</tbody></table>'
+                + '</span>'
+            + '<span class="mq-paren mq-scaled">]</span></span>');
+    };
+});
+
+var EditMatrixColStyle = P(MathCommand, function(_, super_) {
+    _.init = function(ctrlSeq, tagName, attrs) {
+        super_.init.call(this, ctrlSeq, '<span class="mq-matrix">'
+            + '<span class="mq-paren mq-scaled">[</span>'
+                + '<span class="matrix-edit-content-col">'
+                    + '<p>' + attrs + '</p>'
+                + '</span>'
+                + '<span class="matrix-edit-content-col">'
+                    + '<table class="mq-non-leaf mq-rows-3"><tbody>'
+                        + '<tr><td class="mq-empty"></td></tr>'
+                        + '<tr><td class="mq-empty"></td></tr>'
+                        + '<tr><td class="mq-empty"></td></tr>'
+                    + '</tbody></table>'
+                +  '</span>'
+                +  '<span class="mq-paren mq-scaled">]</span>'
+            + '</span>');
+    };
+});
+
 var BiggerSymbolStyle = function (className, content) {
     return P(Symbol, function(_, super_) {
       _.init = function(ctrlSeq, tagName, attrs) {
@@ -164,6 +199,8 @@ LatexCmds.dot = P(MathCommand, function(_, super_) {
         );
     };
 });
+LatexCmds.addmatrixrow = bind(EditMatrixRowStyle, '\\addmatrixrow', 'span', '+');
+LatexCmds.addmatrixcol = bind(EditMatrixColStyle, '\\addmatrixcol', 'span', '+');
 
 LatexCmds.parallelogram = bind(BiggerSymbolStyle('mq-parallelogram', '&#9649;'), '\\parallelogram ', 'span', 'class="mq-non-leaf mq-parallelogram"');
 
