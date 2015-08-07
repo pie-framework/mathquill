@@ -62,6 +62,12 @@ Controller.open(function(_) {
         textarea.focus();
       }
 
+      // if textarea is not focusable so the controller should not look for
+      // the mq component and set cursor to it
+      if (!textarea.is(':focus')) {
+        return false;
+      }
+
       cursor.blink = noop;
       ctrlr.seek($(e.target), e.pageX, e.pageY).cursor.startSelection();
 
