@@ -33,6 +33,12 @@ var latexMathParser = (function() {
     return VanillaSymbol(c);
   });
 
+  // Compound commands e.g. \not\subset
+  var compound = regex(/^\\not\\[a-z]+/).then(function(cmp) {
+    return CompoundCmds[cmp] && CompoundCmds[cmp]().parser() ||
+      fail('unknown compound command: '+cmp);
+  });
+
   var controlSequence = regex(/^[^\\a-eg-zA-Z]/) // hotfix #164; match MathBlock::write
     .or(
       string("\\").then(
@@ -53,7 +59,7 @@ var latexMathParser = (function() {
         return fail("unknown command: \\" + ctrlSeq);
       }
     });
-  var command = controlSequence.or(variable).or(symbol);
+  var command = compound.or(controlSequence).or(variable).or(symbol);
   // Parsers yielding MathBlocks
   var mathGroup = string("{")
     .then(function() {
