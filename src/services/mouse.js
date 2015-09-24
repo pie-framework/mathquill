@@ -42,14 +42,8 @@ Controller.open(function(_) {
       }
 
       function mouseup(e) {
-        cursor.blink = blink;
-        if (!cursor.selection) {
-          if (ctrlr.editable) {
-            cursor.show();
-          }
-          else {
+        if (!cursor.selection && !ctrlr.editable) {
             textareaSpan.detach();
-          }
         }
 
         // delete the mouse handlers now that we're not dragging anymore
@@ -57,18 +51,31 @@ Controller.open(function(_) {
         $(e.target.ownerDocument).unbind('mousemove', docmousemove).unbind('mouseup', mouseup);
       }
 
+      //if user clicks outside a response area
+      //or on the fraction bar, then a mouse event is triggered
+      //at this point, textareaSpan has a default value
+      //but is not attached to the DOM so has no parent
+      if (textareaSpan.parent().length === 0) {
+        return false;
+      }
+      
       if (ctrlr.blurred) {
-        if (!ctrlr.editable) rootjQ.prepend(textareaSpan);
+        if (!ctrlr.editable) 
+          rootjQ.prepend(textareaSpan);
+
+        //focus on body first
+        //to ensure that if user clicks in address
+        //bar and then back into a math box, the user can type
+        //otherwise, typing in the math box will just
+        //result in text being added to address bar
+        document.body.focus();
         textarea.focus();
       }
 
-      // if textarea is not focusable so the controller should not look for
-      // the mq component and set cursor to it
-      if (!textarea.is(':focus')) {
-        return false;
-      }
+      e.preventDefault(); // doesn't work in IE\u22648, but it's a one-line fix:
+      e.target.unselectable = true; // http://jsbin.com/yagekiji/1
 
-      cursor.blink = noop;
+      cursor.show();
       ctrlr.seek($(e.target), e.pageX, e.pageY).cursor.startSelection();
 
       rootjQ.mousemove(mousemove);
@@ -78,7 +85,6 @@ Controller.open(function(_) {
     });
   }
 });
-
 Controller.open(function(_) {
   _.seek = function(target, pageX, pageY) {
     var cursor = this.notify('select').cursor;
