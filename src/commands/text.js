@@ -179,7 +179,13 @@ var TextBlock = P(Node, function(_, super_) {
     self.jQ[0].normalize();
 
     var textPcDom = self.jQ.contents().filter(function (i, el) { return el.nodeType === 3; })[0]
-    if (!textPcDom) return;
+    // when empty \text command is sent, set it to empty string
+    if (!textPcDom) {
+      textPcDom = {
+        data: ""
+      };
+    }
+
     pray('only node in TextBlock span is Text node', textPcDom.nodeType === 3);
     // nodeType === 3 has meant a Text node since ancient times:
     //   http://reference.sitepoint.com/javascript/Node/nodeType
