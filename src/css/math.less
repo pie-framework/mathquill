@@ -164,27 +164,23 @@
       }
     }
   }
- .mq-overline {
-    margin-top: 0.35em;
+ .mq-overline .mq-overline-inner {
+    display: inline-block;
+    padding-top: 0.2em;
+    border-top: 0.14em solid #4d4d4d;
+    margin-left: 0.1em;
+    padding-right: 0.1em;
+    text-align: center;
 
-    .mq-overline-inner {
-      display: inline-block;
-      padding-top: 0.35em;
-      border-top: 0.14em solid #4d4d4d;
-      margin: 0 0.1em;
+    .mq-empty {
       min-width: 1em;
-      text-align: center;
+      margin-top: 0.1em;
+      display: inline-block;
+    }
 
-      .mq-empty {
-        min-width: 1em;
-        margin-top: 0.1em;
-        display: inline-block;
-      }
-
-      .mq-overline-inner-right,
-      .mq-overline-inner-left {
-        display: none;
-      }
+    .mq-overline-inner-right,
+    .mq-overline-inner-left {
+      display: none;
     }
   }
   .mq-longdiv {
