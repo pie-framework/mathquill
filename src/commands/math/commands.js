@@ -74,7 +74,13 @@ var Style = P(MathCommand, function(_, super_) {
 var XArrowStyle = P(MathCommand, function(_, super_) {
   _.init = function(ctrlSeq, tagName, attrs) {
     this.args = arguments;
-    super_.init.call(this, ctrlSeq, '<'+tagName+' '+attrs+'><'+tagName+' class="mq-xarrow-over">&0</'+tagName+'></'+tagName+'>');
+    this.htmlTemplate =
+        '<' + tagName + ' ' + attrs + '>'
+      +   '<' + tagName + ' class="mq-xarrow-over">&0</' + tagName + '>'
+      +   '<' + tagName + ' class="mq-xarrow-under"></' + tagName + '>'
+      + '</' + tagName + '>'
+    ;
+    super_.init.call(this, ctrlSeq);
     this.textTemplate = [ctrlSeq.replace('\\', '') + '(', ')'];
   };
   _.parser = function() {
@@ -107,7 +113,6 @@ var XArrowWithSub = P(XArrowStyle, function(_, super_) {
     return this.ctrlSeq + '['+this.ends[L].latex()+']{'+this.ends[R].latex()+'}';
   };
   _.finalizeTree = function() {
-    this.jQ.addClass('mq-withsub');
     this.downInto = this.ends[L].upOutOf = this.ends[R];
     this.upInto = this.ends[R].downOutOf = this.ends[L];
   };
