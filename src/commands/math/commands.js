@@ -152,6 +152,17 @@ var EditMatrixRowStyle = P(MathCommand, function(_, super_) {
     };
 });
 
+// Function to attach style recurring decimal dot symbol.
+var DotRecurringDecimalStyle = P(MathCommand, function(_, super_) {
+    _.init = function(ctrlSeq) {
+        super_.init.call(this, ctrlSeq, '<span class="mq-non-leaf"><span class="mq-dot-recurring-inner">'
+            + '<span class="mq-dot-recurring">&#x2d9;</span>'
+            + '<span class="mq-empty-box">&0</span>'
+            + '</span></span>'
+        );
+    };
+});
+
 var EditMatrixColStyle = P(MathCommand, function(_, super_) {
     _.init = function(ctrlSeq, tagName, attrs) {
         super_.init.call(this, ctrlSeq, '<span class="mq-matrix">'
@@ -208,6 +219,7 @@ LatexCmds.addmatrixrow = bind(EditMatrixRowStyle, '\\addmatrixrow', 'span', '+')
 LatexCmds.addmatrixcol = bind(EditMatrixColStyle, '\\addmatrixcol', 'span', '+');
 LatexCmds.ngtr = bind(BiggerSymbolStyle('mq-ngtr', '&#8815;'), '\\ngtr ', 'span', 'class="mq-non-leaf mq-ngtr"');
 LatexCmds.nless = bind(BiggerSymbolStyle('mq-nless', '&#8814;'), '\\nless ', 'span', 'class="mq-non-leaf mq-nless"');
+LatexCmds.dot = bind(DotRecurringDecimalStyle, '\\dot');
 
 LatexCmds.parallelogram = bind(BiggerSymbolStyle('mq-parallelogram', '&#9649;'), '\\parallelogram ', 'span', 'class="mq-non-leaf mq-parallelogram"');
 
