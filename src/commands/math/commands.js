@@ -1151,6 +1151,41 @@ var Embed = LatexCmds.embed = P(Symbol, function(_, super_) {
   };
 });
 
+/*
+ * This command allows us to render response container placeholders for authors
+ * when authoring a question with response containers.
+ *
+ * The CSS for these commands is in Question Editor. The reason the CSS wasn't
+ * added to MathQuill is because it is QE specific, uses QE's scss variables
+ * and uses the QE icon font. We didn't want to add the Learnosity icon font
+ * to MathQuill.
+ */
+LatexCmds.MathQuillResponseContainer = P(MathCommand, function (_, super_) {
+  _.ctrlSeq = '\\MathQuillResponseContainer';
+  _.htmlTemplate = '<span class="lrn-mq-response-container">' +
+      '<marker class="lrn-qe-keyboard-i-response"></marker>' +
+      '<content>Response</content>' +
+    '</span>';
+  _.latex = function(){ return '\\MathQuillResponseContainer'; };
+  _.text = function(){ return this.ends[L].text(); };
+});
+
+/*
+ * This command allows us to easily render a response container button in the
+ * formula keyboard. It just container the resopnse container icon.
+ *
+ * This depends on CSS which only exists in Question Editor. See the comment
+ * on MathQuillResponseContainer for an explaination as to why.
+ */
+LatexCmds.MathQuillResponseContainerIcon = P(MathCommand, function (_, super_) {
+  _.ctrlSeq = '\\MathQuillResponseContainerIcon';
+  _.htmlTemplate = '<span class="lrn-mq-response-container-icon">' +
+      '<span class="lrn-qe-keyboard-i-response"></span>' +
+    '</span>';
+  _.latex = function(){ return '\\MathQuillResponseContainerIcon'; };
+  _.text = function(){ return this.ends[L].text(); };
+});
+
 var Matrix = LatexCmds.matrix = P(MathCommand, function(_, super_) {
 
   var MatrixCell = P(MathBlock, function(_, super_) {
