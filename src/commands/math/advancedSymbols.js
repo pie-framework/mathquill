@@ -2,15 +2,11 @@
  * Symbols for Advanced Mathematics
  ***********************************/
 
-LatexCmds.notin =
-LatexCmds.cong =
-LatexCmds.equiv =
-LatexCmds.oplus =
-LatexCmds.otimes = P(BinaryOperator, function(_, super_) {
-  _.init = function(latex) {
-    super_.init.call(this, '\\'+latex+' ', '&'+latex+';');
-  };
-});
+LatexCmds['∉'] = LatexCmds.notin = bind(BinaryOperator,'\\notin ','&#8713;');
+LatexCmds['≅'] = LatexCmds.cong = bind(BinaryOperator,'\\cong ','&#8773;');
+LatexCmds['≡'] = LatexCmds.equiv = bind(BinaryOperator,'\\equiv ','&#8801;');
+LatexCmds['⊕'] = LatexCmds.oplus = bind(BinaryOperator,'\\oplus ','&#8853;');
+LatexCmds['⊗'] = LatexCmds.otimes = bind(BinaryOperator,'\\otimes ','&#8855;');
 
 LatexCmds['≠'] = LatexCmds.ne = LatexCmds.neq = bind(BinaryOperator,'\\ne ','&ne;');
 LatexCmds['\u2247'] = LatexCmds.ncong = bind(BinaryOperator,'\\ncong ','&ncong;');

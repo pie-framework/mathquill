@@ -371,12 +371,13 @@ LatexCmds.Pi =
 LatexCmds.Sigma =
 LatexCmds.Phi =
 LatexCmds.Psi =
-LatexCmds.Omega =
-LatexCmds.forall = P(VanillaSymbol, function(_, super_) {
+LatexCmds.Omega = P(VanillaSymbol, function(_, super_) {
   _.init = function(latex) {
     super_.init.call(this,'\\'+latex+' ','&'+latex+';');
   };
 });
+
+LatexCmds.forall = LatexCmds['∀'] = bind(VanillaSymbol,'\\forall ','&#8704;');
 
 // symbols that aren't a single MathCommand, but are instead a whole
 // Fragment. Creates the Fragment from a LaTeX string
@@ -528,3 +529,173 @@ LatexCmds['÷'] = LatexCmds.div = LatexCmds.divide = LatexCmds.divides =
 
 CharCmds['~'] = LatexCmds.sim = bind(BinaryOperator, '\\sim ', '~', '~');
 CharCmds['\u2241'] = LatexCmds.nsim = bind(BinaryOperator, '\\nsim ', '\u2241', '\u2241');
+
+
+// New VanillaSymbols
+LatexCmds.complement = LatexCmds['∁'] = bind(VanillaSymbol, '\\complement ', '&#8705;');
+LatexCmds.nexists = LatexCmds['∄'] = bind(VanillaSymbol, '\\nexists ', '&#8708;');
+LatexCmds.sphericalangle = LatexCmds['∢'] = bind(VanillaSymbol, '\\sphericalangle ', '&#8738;');
+LatexCmds.iint = LatexCmds['∬'] = bind(VanillaSymbol, '\\iint ', '&#8748;');
+LatexCmds.iiint = LatexCmds['∭'] = bind(VanillaSymbol, '\\iiint ', '&#8749;');
+LatexCmds.oiint = LatexCmds['∯'] = bind(VanillaSymbol, '\\oiint ', '&#8751;');
+LatexCmds.oiiint = LatexCmds['∰'] = bind(VanillaSymbol, '\\oiiint ', '&#8752;');
+LatexCmds.backsim = LatexCmds['∽'] = bind(VanillaSymbol, '\\backsim ', '&#8765;');
+LatexCmds.backsimeq = LatexCmds['⋍'] = bind(VanillaSymbol, '\\backsimeq ', '&#8909;');
+LatexCmds.eqsim = LatexCmds['≂'] = bind(VanillaSymbol, '\\eqsim ', '&#8770;');
+LatexCmds.ncong = LatexCmds['≇'] = bind(VanillaSymbol, '\\ncong ', '&#8775;');
+LatexCmds.approxeq = LatexCmds['≊'] = bind(VanillaSymbol, '\\approxeq ', '&#8778;');
+LatexCmds.bumpeq = LatexCmds['≏'] = bind(VanillaSymbol, '\\bumpeq ', '&#8783;');
+LatexCmds.Bumpeq = LatexCmds['≎'] = bind(VanillaSymbol, '\\Bumpeq ', '&#8782;');
+LatexCmds.doteqdot = LatexCmds['≑'] = bind(VanillaSymbol, '\\doteqdot ', '&#8785;');
+LatexCmds.fallingdotseq = LatexCmds['≒'] = bind(VanillaSymbol, '\\fallingdotseq ', '&#8786;');
+LatexCmds.risingdotseq = LatexCmds['≓'] = bind(VanillaSymbol, '\\risingdotseq ', '&#8787;');
+LatexCmds.eqcirc = LatexCmds['≖'] = bind(VanillaSymbol, '\\eqcirc ', '&#8790;');
+LatexCmds.circeq = LatexCmds['≗'] = bind(VanillaSymbol, '\\circeq ', '&#8791;');
+LatexCmds.triangleq = LatexCmds['≜'] = bind(VanillaSymbol, '\\triangleq ', '&#8796;');
+LatexCmds.leqq = LatexCmds['≦'] = bind(VanillaSymbol, '\\leqq ', '&#8806;');
+LatexCmds.geqq = LatexCmds['≧'] = bind(VanillaSymbol, '\\geqq ', '&#8807;');
+LatexCmds.lneqq = LatexCmds['≨'] = bind(VanillaSymbol, '\\lneqq ', '&#8808;');
+LatexCmds.gneqq = LatexCmds['≩'] = bind(VanillaSymbol, '\\gneqq ', '&#8809;');
+LatexCmds.between = LatexCmds['≬'] = bind(VanillaSymbol, '\\between ', '&#8812;');
+LatexCmds.nleq = LatexCmds['≰'] = bind(VanillaSymbol, '\\nleq ', '&#8816;');
+LatexCmds.ngeq = LatexCmds['≱'] = bind(VanillaSymbol, '\\ngeq ', '&#8817;');
+LatexCmds.lesssim = LatexCmds['≲'] = bind(VanillaSymbol, '\\lesssim ', '&#8818;');
+LatexCmds.gtrsim = LatexCmds['≳'] = bind(VanillaSymbol, '\\gtrsim ', '&#8819;');
+LatexCmds.lessgtr = LatexCmds['≶'] = bind(VanillaSymbol, '\\lessgtr ', '&#8822;');
+LatexCmds.gtrless = LatexCmds['≷'] = bind(VanillaSymbol, '\\gtrless ', '&#8823;');
+LatexCmds.preccurlyeq = LatexCmds['≼'] = bind(VanillaSymbol, '\\preccurlyeq ', '&#8828;');
+LatexCmds.succcurlyeq = LatexCmds['≽'] = bind(VanillaSymbol, '\\succcurlyeq ', '&#8829;');
+LatexCmds.precsim = LatexCmds['≾'] = bind(VanillaSymbol, '\\precsim ', '&#8830;');
+LatexCmds.succsim = LatexCmds['≿'] = bind(VanillaSymbol, '\\succsim ', '&#8831;');
+LatexCmds.nprec = LatexCmds['⊀'] = bind(VanillaSymbol, '\\nprec ', '&#8832;');
+LatexCmds.nsucc = LatexCmds['⊁'] = bind(VanillaSymbol, '\\nsucc ', '&#8833;');
+LatexCmds.subsetneq = LatexCmds['⊊'] = bind(VanillaSymbol, '\\subsetneq ', '&#8842;');
+LatexCmds.supsetneq = LatexCmds['⊋'] = bind(VanillaSymbol, '\\supsetneq ', '&#8843;');
+LatexCmds.vDash = LatexCmds['⊨'] = bind(VanillaSymbol, '\\vDash ', '&#8872;');
+LatexCmds.Vdash = LatexCmds['⊩'] = bind(VanillaSymbol, '\\Vdash ', '&#8873;');
+LatexCmds.Vvdash = LatexCmds['⊪'] = bind(VanillaSymbol, '\\Vvdash ', '&#8874;');
+LatexCmds.VDash = LatexCmds['⊫'] = bind(VanillaSymbol, '\\VDash ', '&#8875;');
+LatexCmds.nvdash = LatexCmds['⊬'] = bind(VanillaSymbol, '\\nvdash ', '&#8876;');
+LatexCmds.nvDash = LatexCmds['⊭'] = bind(VanillaSymbol, '\\nvDash ', '&#8877;');
+LatexCmds.nVdash = LatexCmds['⊮'] = bind(VanillaSymbol, '\\nVdash ', '&#8878;');
+LatexCmds.nVDash = LatexCmds['⊯'] = bind(VanillaSymbol, '\\nVDash ', '&#8879;');
+LatexCmds.vartriangleleft = LatexCmds['⊲'] = bind(VanillaSymbol, '\\vartriangleleft ', '&#8882;');
+LatexCmds.vartriangleright = LatexCmds['⊳'] = bind(VanillaSymbol, '\\vartriangleright ', '&#8883;');
+LatexCmds.trianglelefteq = LatexCmds['⊴'] = bind(VanillaSymbol, '\\trianglelefteq ', '&#8884;');
+LatexCmds.trianglerighteq = LatexCmds['⊵'] = bind(VanillaSymbol, '\\trianglerighteq ', '&#8885;');
+LatexCmds.multimap = LatexCmds['⊸'] = bind(VanillaSymbol, '\\multimap ', '&#8888;');
+LatexCmds.Subset = LatexCmds['⋐'] = bind(VanillaSymbol, '\\Subset ', '&#8912;');
+LatexCmds.Supset = LatexCmds['⋑'] = bind(VanillaSymbol, '\\Supset ', '&#8913;');
+LatexCmds.Cap = LatexCmds['⋒'] = bind(VanillaSymbol, '\\Cap ', '&#8914;');
+LatexCmds.Cup = LatexCmds['⋓'] = bind(VanillaSymbol, '\\Cup ', '&#8915;');
+LatexCmds.pitchfork = LatexCmds['⋔'] = bind(VanillaSymbol, '\\pitchfork ', '&#8916;');
+LatexCmds.lessdot = LatexCmds['⋖'] = bind(VanillaSymbol, '\\lessdot ', '&#8918;');
+LatexCmds.gtrdot = LatexCmds['⋗'] = bind(VanillaSymbol, '\\gtrdot ', '&#8919;');
+LatexCmds.lll = LatexCmds['⋘'] = bind(VanillaSymbol, '\\lll ', '&#8920;');
+LatexCmds.ggg = LatexCmds['⋙'] = bind(VanillaSymbol, '\\ggg ', '&#8921;');
+LatexCmds.lesseqgtr = LatexCmds['⋚'] = bind(VanillaSymbol, '\\lesseqgtr ', '&#8922;');
+LatexCmds.gtreqless = LatexCmds['⋛'] = bind(VanillaSymbol, '\\gtreqless ', '&#8923;');
+LatexCmds.curlyeqprec = LatexCmds['⋞'] = bind(VanillaSymbol, '\\curlyeqprec ', '&#8926;');
+LatexCmds.curlyeqsucc = LatexCmds['⋟'] = bind(VanillaSymbol, '\\curlyeqsucc ', '&#8927;');
+LatexCmds.nsim = LatexCmds['≁'] = bind(VanillaSymbol, '\\nsim ', '&#8769;');
+LatexCmds.lnsim = LatexCmds['⋦'] = bind(VanillaSymbol, '\\lnsim ', '&#8934;');
+LatexCmds.gnsim = LatexCmds['⋧'] = bind(VanillaSymbol, '\\gnsim ', '&#8935;');
+LatexCmds.precnsim = LatexCmds['⋨'] = bind(VanillaSymbol, '\\precnsim ', '&#8936;');
+LatexCmds.succnsim = LatexCmds['⋩'] = bind(VanillaSymbol, '\\succnsim ', '&#8937;');
+LatexCmds.ntriangleleft = LatexCmds['⋪'] = bind(VanillaSymbol, '\\ntriangleleft ', '&#8938;');
+LatexCmds.ntriangleright = LatexCmds['⋫'] = bind(VanillaSymbol, '\\ntriangleright ', '&#8939;');
+LatexCmds.ntrianglelefteq = LatexCmds['⋬'] = bind(VanillaSymbol, '\\ntrianglelefteq ', '&#8940;');
+LatexCmds.ntrianglerighteq = LatexCmds['⋭'] = bind(VanillaSymbol, '\\ntrianglerighteq ', '&#8941;');
+LatexCmds.blacksquare = LatexCmds['∎'] = bind(VanillaSymbol, '\\blacksquare ', '&#8718;');
+LatexCmds.colon = LatexCmds['∶'] = bind(VanillaSymbol, '\\colon ', '&#8758;');
+LatexCmds.llcorner = LatexCmds['∟'] = bind(VanillaSymbol, '\\llcorner ', '&#8735;');
+
+// New BinaryOperators
+LatexCmds.dotplus = LatexCmds['∔'] = bind(BinaryOperator, '\\dotplus ', '&#8724;');
+LatexCmds.nmid = LatexCmds['∤'] = bind(BinaryOperator,'\nmid ','&#8740;');
+LatexCmds.intercal = LatexCmds['⊺'] = bind(BinaryOperator, '\\intercal ', '&#8890;');
+LatexCmds.veebar = LatexCmds['⊻'] = bind(BinaryOperator, '\\veebar ', '&#8891;');
+LatexCmds.barwedge = LatexCmds['⊼'] = bind(BinaryOperator, '\\barwedge ', '&#8892;');
+LatexCmds.ltimes = LatexCmds['⋉'] = bind(BinaryOperator, '\\ltimes ', '&#8905;');
+LatexCmds.rtimes = LatexCmds['⋊'] = bind(BinaryOperator, '\\rtimes ', '&#8906;');
+LatexCmds.leftthreetimes = LatexCmds['⋋'] = bind(BinaryOperator, '\\leftthreetimes ', '&#8907;');
+LatexCmds.rightthreetimes = LatexCmds['⋌'] = bind(BinaryOperator, '\\rightthreetimes ', '&#8908;');
+LatexCmds.curlyvee = LatexCmds['⋎'] = bind(BinaryOperator, '\\curlyvee ', '&#8910;');
+LatexCmds.curlywedge = LatexCmds['⋏'] = bind(BinaryOperator, '\\curlywedge ', '&#8911;');
+LatexCmds.circledcirc = LatexCmds['⊚'] = bind(BinaryOperator, '\\circledcirc ', '&#8858;');
+LatexCmds.circledast = LatexCmds['⊛'] = bind(BinaryOperator, '\\circledast ', '&#8859;');
+LatexCmds.circleddash = LatexCmds['⊝'] = bind(BinaryOperator, '\\circleddash ', '&#8861;');
+LatexCmds.boxplus = LatexCmds['⊞'] = bind(BinaryOperator, '\\boxplus ', '&#8862;');
+LatexCmds.boxminus = LatexCmds['⊟'] = bind(BinaryOperator, '\\boxminus ', '&#8863;');
+LatexCmds.boxtimes = LatexCmds['⊠'] = bind(BinaryOperator, '\\boxtimes ', '&#8864;');
+LatexCmds.boxdot = LatexCmds['⊡'] = bind(BinaryOperator, '\\boxdot ', '&#8865;');
+
+// New mappings to existing symbols
+LatexCmds['∂'] = LatexCmds.partial;
+LatexCmds['∃'] = LatexCmds.exists;
+LatexCmds['∅'] = LatexCmds.varnothing;
+LatexCmds['∆'] = LatexCmds.triangle;
+LatexCmds['∇'] = LatexCmds.nabla;
+LatexCmds['∈'] = LatexCmds.in;
+LatexCmds['∊'] = LatexCmds.in;
+LatexCmds['∋'] = LatexCmds.ni;
+LatexCmds['∌'] = LatexCmds.notni;
+LatexCmds['∍'] = LatexCmds.ni;
+LatexCmds['∐'] = LatexCmds.amalg;
+LatexCmds['−'] = LatexCmds['-'];
+LatexCmds['∓'] = LatexCmds.mp;
+LatexCmds['∖'] = LatexCmds.setminus;
+LatexCmds['∘'] = LatexCmds.circ;
+LatexCmds['∙'] = LatexCmds.bullet;
+LatexCmds['∝'] = LatexCmds.propto;
+LatexCmds['∞'] = LatexCmds.infty;
+LatexCmds['∠'] = LatexCmds.angle;
+LatexCmds['∡'] = LatexCmds.measuredangle;
+LatexCmds['∣'] = LatexCmds.divides;
+LatexCmds['∥'] = LatexCmds.parallel;
+LatexCmds['∦'] = LatexCmds.nparallel;
+LatexCmds['∧'] = LatexCmds.wedge;
+LatexCmds['∨'] = LatexCmds.vee;
+LatexCmds['∩'] = LatexCmds.cap;
+LatexCmds['∪'] = LatexCmds.cup;
+LatexCmds['∮'] = LatexCmds.oint;
+LatexCmds['∴'] = LatexCmds.therefore;
+LatexCmds['∵'] = LatexCmds.because;
+LatexCmds['∼'] = LatexCmds.sim;
+LatexCmds['≀'] = LatexCmds.wr;
+LatexCmds['≃'] = LatexCmds.simeq;
+LatexCmds['≍'] = LatexCmds.asymp;
+LatexCmds['≐'] = LatexCmds.doteq;
+LatexCmds['≪'] = LatexCmds.ll;
+LatexCmds['≫'] = LatexCmds.gg;
+LatexCmds['≺'] = LatexCmds.prec;
+LatexCmds['≻'] = LatexCmds.succ;
+LatexCmds['⊂'] = LatexCmds.subset;
+LatexCmds['⊃'] = LatexCmds.supset;
+LatexCmds['⊆'] = LatexCmds.subseteq;
+LatexCmds['⊇'] = LatexCmds.supseteq;
+LatexCmds['⊈'] = LatexCmds.nsubseteq;
+LatexCmds['⊉'] = LatexCmds.nsupseteq;
+LatexCmds['⊏'] = LatexCmds.sqsubset;
+LatexCmds['⊐'] = LatexCmds.sqsupset;
+LatexCmds['⊓'] = LatexCmds.sqcap;
+LatexCmds['⊔'] = LatexCmds.sqcup;
+LatexCmds['⊖'] = LatexCmds.ominus;
+LatexCmds['⊘'] = LatexCmds.oslash;
+LatexCmds['⊙'] = LatexCmds.odot;
+LatexCmds['⊢'] = LatexCmds.vdash;
+LatexCmds['⊣'] = LatexCmds.dashv;
+LatexCmds['⊤'] = LatexCmds.top;
+LatexCmds['⊥'] = LatexCmds.bot;
+LatexCmds['⊧'] = LatexCmds.models;
+LatexCmds['⋀'] = LatexCmds.wedge;
+LatexCmds['⋁'] = LatexCmds.vee;
+LatexCmds['⋂'] = LatexCmds.cap;
+LatexCmds['⋃'] = LatexCmds.cup;
+LatexCmds['⋄'] = LatexCmds.diamond;
+LatexCmds['⋅'] = LatexCmds.cdot;
+LatexCmds['⋆'] = LatexCmds.star;
+LatexCmds['⋈'] = LatexCmds.bowtie;
+LatexCmds['⋮'] = LatexCmds.vdots;
+LatexCmds['⋯'] = LatexCmds.cdots;
+LatexCmds['⋱'] = LatexCmds.ddots;

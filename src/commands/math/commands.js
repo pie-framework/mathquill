@@ -217,8 +217,8 @@ LatexCmds.dot = P(MathCommand, function(_, super_) {
 });
 LatexCmds.addmatrixrow = bind(EditMatrixRowStyle, '\\addmatrixrow', 'span', '+');
 LatexCmds.addmatrixcol = bind(EditMatrixColStyle, '\\addmatrixcol', 'span', '+');
-LatexCmds.ngtr = bind(BiggerSymbolStyle('mq-ngtr', '&#8815;'), '\\ngtr ', 'span', 'class="mq-non-leaf mq-ngtr"');
-LatexCmds.nless = bind(BiggerSymbolStyle('mq-nless', '&#8814;'), '\\nless ', 'span', 'class="mq-non-leaf mq-nless"');
+LatexCmds.ngtr = LatexCmds['≯'] = bind(BiggerSymbolStyle('mq-ngtr', '&#8815;'), '\\ngtr ', 'span', 'class="mq-non-leaf mq-ngtr"');
+LatexCmds.nless = LatexCmds['≮'] = bind(BiggerSymbolStyle('mq-nless', '&#8814;'), '\\nless ', 'span', 'class="mq-non-leaf mq-nless"');
 LatexCmds.dot = bind(DotRecurringDecimalStyle, '\\dot');
 
 LatexCmds.parallelogram = bind(BiggerSymbolStyle('mq-parallelogram', '&#9649;'), '\\parallelogram ', 'span', 'class="mq-non-leaf mq-parallelogram"');
