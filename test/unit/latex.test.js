@@ -2,11 +2,11 @@ suite("latex", function() {
   function assertParsesLatex(str, latex) {
     if (arguments.length < 2) latex = str;
 
-    console.log("1", latexMathParser.parse(str));
     var result = latexMathParser
       .parse(str)
       .postOrder("finalizeTree", Options.p)
-      .join("latex");
+      .join("latex")
+      .trim();
     assert.equal(
       result,
       latex,
@@ -14,11 +14,11 @@ suite("latex", function() {
     );
   }
 
-  test.only("ed test", function() {
+  test("new commands test", function() {
     assertParsesLatex("\\napprox");
-    // assertParsesLatex("\\neg\\approx");
-    // assertParsesLatex("\\sqrt{3}");
+    assertParsesLatex("\\nsim");
   });
+
   test("empty LaTeX", function() {
     assertParsesLatex("");
     assertParsesLatex(" ", "");
