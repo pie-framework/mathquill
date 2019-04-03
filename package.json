@@ -1,15 +1,20 @@
 {
-  "name": "mathquill",
-  "description": "Easily type math in your webapp",
+  "name": "@pie-framework/mathquill",
+  "description": "A fork of mathquill that works with common js: Easily type math in your webapp",
   "version": "0.10.1",
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "MPL-2.0",
+  "main": "build/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mathquill/mathquill.git"
+    "url": "https://github.com/pie-framework/mathquill.git"
   },
   "files": [
     "build/mathquill.{css,js,min.js}",
     "build/fonts/Symbola.*",
+    "build/index-dev.js",
     "quickstart.html"
   ],
   "devDependencies": {

@@ -103,8 +103,8 @@ BUILD_DIR_EXISTS = $(BUILD_DIR)/.exists--used_by_Makefile
 # -*- Build tasks -*-
 #
 
-.PHONY: all basic dev js uglify css font clean
-all: font css uglify
+.PHONY: all basic dev js uglify css font clean 
+all: font css uglify wp
 basic: $(UGLY_BASIC_JS) $(BASIC_CSS)
 # dev is like all, but without minification
 dev: font css js
@@ -112,6 +112,10 @@ js: $(BUILD_JS)
 uglify: $(UGLY_JS)
 css: $(BUILD_CSS)
 font: $(FONT_TARGET)
+wp: 
+	cp -rv webpack/index.js build/index.js
+	cp -rv webpack/index-dev.js build/index-dev.js
+
 clean:
 	rm -rf $(BUILD_DIR)
 
@@ -151,6 +155,8 @@ $(BUILD_DIR_EXISTS):
 $(FONT_TARGET): $(FONT_SOURCE) $(BUILD_DIR_EXISTS)
 	rm -rf $@
 	cp -r $< $@
+
+# cp -rv webpack/* build/*
 
 #
 # -*- Test tasks -*-
