@@ -5,3 +5,4 @@ node_modules
 script
 build/.exists-used_by_Makefile
 webpack
+quickstart.html
