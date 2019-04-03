@@ -2,103 +2,76 @@
  * Symbols for Advanced Mathematics
  ***********************************/
 
-LatexCmds.notin = LatexCmds.cong = LatexCmds.equiv = LatexCmds.oplus = LatexCmds.otimes = P(
-  BinaryOperator,
-  function(_, super_) {
-    _.init = function(latex) {
-      super_.init.call(this, "\\" + latex + " ", "&" + latex + ";");
-    };
-  }
-);
+LatexCmds.notin =
+LatexCmds.cong =
+LatexCmds.equiv =
+LatexCmds.oplus =
+LatexCmds.otimes = P(BinaryOperator, function(_, super_) {
+  _.init = function(latex) {
+    super_.init.call(this, '\\'+latex+' ', '&'+latex+';');
+  };
+});
 
-LatexCmds["≠"] = LatexCmds.ne = LatexCmds.neq = bind(
-  BinaryOperator,
-  "\\ne ",
-  "&ne;"
-);
+LatexCmds['≠'] = LatexCmds.ne = LatexCmds.neq = bind(BinaryOperator,'\\ne ','&ne;');
+LatexCmds['\u2247'] = LatexCmds.ncong = bind(BinaryOperator,'\\ncong ','&ncong;');
 
-LatexCmds[
-  "∗"
-] = LatexCmds.ast = LatexCmds.star = LatexCmds.loast = LatexCmds.lowast = bind(
-  BinaryOperator,
-  "\\ast ",
-  "&lowast;"
-);
+LatexCmds['∗'] = LatexCmds.ast = LatexCmds.star = LatexCmds.loast = LatexCmds.lowast =
+  bind(BinaryOperator,'\\ast ','&lowast;');
 
-LatexCmds.therefor = LatexCmds.therefore = bind(
-  BinaryOperator,
-  "\\therefore ",
-  "&there4;"
-);
+LatexCmds.therefor = LatexCmds.therefore =
+  bind(BinaryOperator,'\\therefore ','&there4;');
 
-LatexCmds.cuz = LatexCmds.because = bind( // l33t
-  BinaryOperator,
-  "\\because ",
-  "&#8757;"
-);
+LatexCmds.cuz = // l33t
+LatexCmds.because = bind(BinaryOperator,'\\because ','&#8757;');
 
-LatexCmds.prop = LatexCmds.propto = bind(BinaryOperator, "\\propto ", "&prop;");
+LatexCmds.prop = LatexCmds.propto = bind(BinaryOperator,'\\propto ','&prop;');
 
-LatexCmds.napprox = bind(BinaryOperator, "\\napprox ", "&asymp;");
-LatexCmds["≈"] = LatexCmds.asymp = LatexCmds.approx = bind(
-  BinaryOperator,
-  "\\approx ",
-  "&asymp;"
-);
+LatexCmds['≈'] = LatexCmds.asymp = LatexCmds.approx = bind(BinaryOperator,'\\approx ','&asymp;');
+LatexCmds['\u2249'] = LatexCmds.nasymp = LatexCmds.napprox = bind(BinaryOperator,'\\napprox ','&nap;');
 
-LatexCmds.isin = LatexCmds["in"] = bind(BinaryOperator, "\\in ", "&isin;");
+LatexCmds.isin = LatexCmds['in'] = bind(BinaryOperator,'\\in ','&isin;');
 
-LatexCmds.ni = LatexCmds.contains = bind(BinaryOperator, "\\ni ", "&ni;");
+LatexCmds.ni = LatexCmds.contains = bind(BinaryOperator,'\\ni ','&ni;');
 
-LatexCmds.notni = LatexCmds.niton = LatexCmds.notcontains = LatexCmds.doesnotcontain = bind(
-  BinaryOperator,
-  "\\not\\ni ",
-  "&#8716;"
-);
+LatexCmds.notni = LatexCmds.niton = LatexCmds.notcontains = LatexCmds.doesnotcontain =
+  bind(BinaryOperator,'\\not\\ni ','&#8716;');
 
-LatexCmds.sub = LatexCmds.subset = bind(BinaryOperator, "\\subset ", "&sub;");
+LatexCmds.sub = LatexCmds.subset = bind(BinaryOperator,'\\subset ','&sub;');
 
-LatexCmds.sup = LatexCmds.supset = LatexCmds.superset = bind(
-  BinaryOperator,
-  "\\supset ",
-  "&sup;"
-);
+LatexCmds.sup = LatexCmds.supset = LatexCmds.superset =
+  bind(BinaryOperator,'\\supset ','&sup;');
 
-LatexCmds.nsub = LatexCmds.notsub = LatexCmds.nsubset = LatexCmds.notsubset = bind(
-  BinaryOperator,
-  "\\not\\subset ",
-  "&#8836;"
-);
+LatexCmds.nsub = LatexCmds.notsub =
+LatexCmds.nsubset = LatexCmds.notsubset =
+  bind(BinaryOperator,'\\not\\subset ','&#8836;');
 
-LatexCmds.nsup = LatexCmds.notsup = LatexCmds.nsupset = LatexCmds.notsupset = LatexCmds.nsuperset = LatexCmds.notsuperset = bind(
-  BinaryOperator,
-  "\\not\\supset ",
-  "&#8837;"
-);
+LatexCmds.nsup = LatexCmds.notsup =
+LatexCmds.nsupset = LatexCmds.notsupset =
+LatexCmds.nsuperset = LatexCmds.notsuperset =
+  bind(BinaryOperator,'\\not\\supset ','&#8837;');
 
-LatexCmds.sube = LatexCmds.subeq = LatexCmds.subsete = LatexCmds.subseteq = bind(
-  BinaryOperator,
-  "\\subseteq ",
-  "&sube;"
-);
+LatexCmds.sube = LatexCmds.subeq = LatexCmds.subsete = LatexCmds.subseteq =
+  bind(BinaryOperator,'\\subseteq ','&sube;');
 
-LatexCmds.supe = LatexCmds.supeq = LatexCmds.supsete = LatexCmds.supseteq = LatexCmds.supersete = LatexCmds.superseteq = bind(
-  BinaryOperator,
-  "\\supseteq ",
-  "&supe;"
-);
+LatexCmds.supe = LatexCmds.supeq =
+LatexCmds.supsete = LatexCmds.supseteq =
+LatexCmds.supersete = LatexCmds.superseteq =
+  bind(BinaryOperator,'\\supseteq ','&supe;');
 
-LatexCmds.nsube = LatexCmds.nsubeq = LatexCmds.notsube = LatexCmds.notsubeq = LatexCmds.nsubsete = LatexCmds.nsubseteq = LatexCmds.notsubsete = LatexCmds.notsubseteq = bind(
-  BinaryOperator,
-  "\\not\\subseteq ",
-  "&#8840;"
-);
+LatexCmds.nsube = LatexCmds.nsubeq =
+LatexCmds.notsube = LatexCmds.notsubeq =
+LatexCmds.nsubsete = LatexCmds.nsubseteq =
+LatexCmds.notsubsete = LatexCmds.notsubseteq =
+  bind(BinaryOperator,'\\not\\subseteq ','&#8840;');
 
-LatexCmds.nsupe = LatexCmds.nsupeq = LatexCmds.notsupe = LatexCmds.notsupeq = LatexCmds.nsupsete = LatexCmds.nsupseteq = LatexCmds.notsupsete = LatexCmds.notsupseteq = LatexCmds.nsupersete = LatexCmds.nsuperseteq = LatexCmds.notsupersete = LatexCmds.notsuperseteq = bind(
-  BinaryOperator,
-  "\\not\\supseteq ",
-  "&#8841;"
-);
+LatexCmds.nsupe = LatexCmds.nsupeq =
+LatexCmds.notsupe = LatexCmds.notsupeq =
+LatexCmds.nsupsete = LatexCmds.nsupseteq =
+LatexCmds.notsupsete = LatexCmds.notsupseteq =
+LatexCmds.nsupersete = LatexCmds.nsuperseteq =
+LatexCmds.notsupersete = LatexCmds.notsuperseteq =
+  bind(BinaryOperator,'\\not\\supseteq ','&#8841;');
+
 
 //the canonical sets of numbers
 LatexCmds.N = LatexCmds.naturals = LatexCmds.Naturals = bind(
