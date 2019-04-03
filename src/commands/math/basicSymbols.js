@@ -526,3 +526,4 @@ LatexCmds['÷'] = LatexCmds.div = LatexCmds.divide = LatexCmds.divides =
   bind(BinaryOperator,'\\div ','&divide;', '[/]');
 
 CharCmds['~'] = LatexCmds.sim = bind(BinaryOperator, '\\sim ', '~', '~');
+CharCmds['\u2241'] = LatexCmds.nsim = bind(BinaryOperator, '\\nsim ', '\u2241', '\u2241');

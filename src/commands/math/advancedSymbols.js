@@ -13,6 +13,7 @@ LatexCmds.otimes = P(BinaryOperator, function(_, super_) {
 });
 
 LatexCmds['≠'] = LatexCmds.ne = LatexCmds.neq = bind(BinaryOperator,'\\ne ','&ne;');
+LatexCmds['\u2247'] = LatexCmds.ncong = bind(BinaryOperator,'\\ncong ','&ncong;');
 
 LatexCmds['∗'] = LatexCmds.ast = LatexCmds.star = LatexCmds.loast = LatexCmds.lowast =
   bind(BinaryOperator,'\\ast ','&lowast;');
@@ -26,6 +27,7 @@ LatexCmds.because = bind(BinaryOperator,'\\because ','&#8757;');
 LatexCmds.prop = LatexCmds.propto = bind(BinaryOperator,'\\propto ','&prop;');
 
 LatexCmds['≈'] = LatexCmds.asymp = LatexCmds.approx = bind(BinaryOperator,'\\approx ','&asymp;');
+LatexCmds['\u2249'] = LatexCmds.nasymp = LatexCmds.napprox = bind(BinaryOperator,'\\napprox ','&nap;');
 
 LatexCmds.isin = LatexCmds['in'] = bind(BinaryOperator,'\\in ','&isin;');
 
