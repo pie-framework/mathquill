@@ -90,7 +90,8 @@ Controller.open(function(_, super_) {
     return latexMathParser
       .parse(str)
       .postOrder("finalizeTree", Options.p)
-      .join("latex");
+      .join("latex")
+      .trim();
   };
 
   optionProcessors.maxDepth = function(depth) {
