@@ -38,7 +38,6 @@
   // TODO: what's the difference between these?
   .mq-empty {
     background: transparent;
-    border: 1px dotted black;
   }
 
   &.mq-empty {
@@ -416,7 +415,7 @@
   }
 
   sup.mq-nthroot {
-    font-size: 0.7em;
+    font-size: 80%;
     vertical-align: 0.8em;
     margin-right: -.6em;
     margin-left: .2em;
@@ -500,19 +499,14 @@
 
   .mq-numerator, .mq-over {
     padding: 0 0.1em;
-  }
-
-  .mq-denominator {
-    float: left;
-    width: 100%;
-    padding: .15em .1em 0 .1em;
-    margin-right: -.1em;
-    margin-left: -.1em;
-    text-align: center;
+    margin-bottom: .2em;
   }
 
   .mq-denominator {
     border-top: 1px solid;
+    float: right; // take out of normal flow to manipulate baseline
+    width: 100%;
+    padding: .3em 0.1em 0.1em;
   }
 
   .mq-dot-recurring {
@@ -690,6 +684,61 @@
       .mq-longdiv-curve-border {
         font-size: 1.33em;
       }
+    }
+  }
+}
+
+.mq-overarrow {
+  min-width: .5em;
+  border-top: 1px solid black;
+  margin-top: 1px;
+  padding-top: 0.2em;
+  text-align: center;
+
+  &:before {
+    display: block;
+    position: relative;
+    top: -0.34em;
+    font-size: 0.5em;
+    line-height: 0em;
+    content: '\27A4';
+    text-align: right;
+  }
+  &.mq-arrow-left:before {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+  }
+  &.mq-arrow-both {
+    vertical-align: text-bottom;
+
+    &.mq-empty {
+      min-height: 1.23em;
+
+      &:after {
+        top: -0.34em;
+      }
+    }
+    &:before{
+      -moz-transform: scaleX(-1);
+      -o-transform: scaleX(-1);
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
+      filter: FlipH;
+      -ms-filter: "FlipH";
+    }
+    &:after {
+      display: block;
+      position: relative;
+      top: -2.3em;
+      font-size: 0.5em;
+      line-height: 0em;
+      content: '\27A4';
+      visibility: visible; //must override .mq-editable-field.mq-empty:after
+      text-align: right;
     }
   }
 }
