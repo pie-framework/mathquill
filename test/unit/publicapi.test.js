@@ -72,14 +72,6 @@ suite('Public API', function() {
       mq.latex('\\oplus');
       assert.equal(mq.latex(), ''); // TODO: better LaTeX parse error behavior
     });
-
-    test('mousedown outside editable area doesnt activate cursor', function() {
-      mq.latex('\\MathQuillMathField{}+\\MathQuillMathField{}');
-      $(mq.el()).find('.mq-binary-operator').trigger('mousedown');
-      assert.equal($(mq.el()).find('.mq-cursor').length, 0,
-        'Cursor was created outside editable areas');
-    });
-    
   });
 
   suite('basic API methods', function() {
@@ -319,7 +311,7 @@ suite('Public API', function() {
       });
     }
   });
-  
+
   suite('edit handler', function() {
     test('fires when closing a bracket expression', function() {
       var count = 0;
