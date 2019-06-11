@@ -150,13 +150,6 @@ suite("latex", function() {
     assertParsesLatex("\\left ( 123 \\right ) ", "\\left(123\\right)");
   });
 
-  test("escaped whitespace", function() {
-    assertParsesLatex("\\ ", "\\ ");
-    assertParsesLatex("\\      ", "\\ ");
-    assertParsesLatex("  \\   \\\t\t\t\\   \\\n\n\n", "\\ \\ \\ \\ ");
-    assertParsesLatex("\\space\\   \\   space  ", "\\ \\ \\ space");
-  });
-
   test("\\text", function() {
     assertParsesLatex("\\text { lol! } ", "\\text{ lol! }");
     assertParsesLatex(
@@ -176,41 +169,41 @@ suite("latex", function() {
   });
 
   test("not real LaTex commands, but valid symbols", function() {
-    assertParsesLatex("\\parallelogram ");
-    assertParsesLatex("\\circledot ", "\\odot ");
-    assertParsesLatex("\\degree ");
-    assertParsesLatex("\\square ");
+    assertParsesLatex("\\parallelogram");
+    assertParsesLatex("\\circledot", "\\circledot");
+    assertParsesLatex("\\degree");
+    assertParsesLatex("\\square");
   });
 
   test('matrices', function() {
-        assertParsesLatex('\\begin{matrix}x\\end{matrix}');
-        assertParsesLatex('\\begin{pmatrix}x\\end{pmatrix}');
-        assertParsesLatex('\\begin{Bmatrix}x\\end{Bmatrix}');
-        assertParsesLatex('\\begin{vmatrix}x&y\\\\1&2\\end{vmatrix}');
-        assertParsesLatex('\\begin{bmatrix}x&y&z&123&x^2\\\\23&s&\\sin \\theta &1&x\\\\e&h&a&1&y\\end{bmatrix}');
+    assertParsesLatex('\\begin{matrix}x\\end{matrix}');
+    assertParsesLatex('\\begin{pmatrix}x\\end{pmatrix}');
+    assertParsesLatex('\\begin{Bmatrix}x\\end{Bmatrix}');
+    assertParsesLatex('\\begin{vmatrix}x&y\\\\1&2\\end{vmatrix}');
+    assertParsesLatex('\\begin{bmatrix}x&y&z&123&x^2\\\\23&s&\\sin \\theta &1&x\\\\e&h&a&1&y\\end{bmatrix}');
 
-        // Adds missing cells
-        assertParsesLatex('\\begin{Vmatrix}x&y\\\\1\\end{Vmatrix}', '\\begin{Vmatrix}x&y\\\\1&\\end{Vmatrix}');
-      });
+    // Adds missing cells
+    assertParsesLatex('\\begin{Vmatrix}x&y\\\\1\\end{Vmatrix}', '\\begin{Vmatrix}x&y\\\\1&\\end{Vmatrix}');
+  });
 
   test('compound symbols beginning with \\not', function() {
-    assertParsesLatex('\\not\\ni ');
-    assertParsesLatex('\\not\\subset ');
-    assertParsesLatex('\\not\\supset ');
-    assertParsesLatex('\\not\\subseteq ');
-    assertParsesLatex('\\not\\supseteq ');
+    assertParsesLatex('\\not\\ni');
+    assertParsesLatex('\\not\\subset');
+    assertParsesLatex('\\not\\supset');
+    assertParsesLatex('\\not\\subseteq');
+    assertParsesLatex('\\not\\supseteq');
   });
 
   test('miscellaneous symbols', function() {
     assertParsesLatex('\\xrightarrow{xyz}');
     assertParsesLatex('\\xleftarrow{123}');
-    assertParsesLatex('\\parallelogram ');
-    assertParsesLatex('\\circledot ');
-    assertParsesLatex('\\middot ');
+    assertParsesLatex('\\parallelogram');
+    assertParsesLatex('\\circledot');
+    assertParsesLatex('\\middot');
     assertParsesLatex('"');
-    assertParsesLatex('\\dottedsquare ');
-    assertParsesLatex('\\square ');
-    assertParsesLatex('\\rectangle ');
+    assertParsesLatex('\\dottedsquare');
+    assertParsesLatex('\\square');
+    assertParsesLatex('\\rectangle');
     assertParsesLatex('\\overline{xyz}');
     assertParsesLatex('\\overleftarrow{123}');
     assertParsesLatex('\\overrightarrow{abc}');
@@ -220,10 +213,10 @@ suite("latex", function() {
     assertParsesLatex('\\lrnsquaredexponent{a}', 'a^2');
     assertParsesLatex('\\lrnsubscript{a}{b}', 'a_b');
     assertParsesLatex('\\longdiv{x}');
-    assertParsesLatex('\\mug ');
-    assertParsesLatex('\\mus ');
-    assertParsesLatex('\\mum ');
-    assertParsesLatex('\\muL ');
+    assertParsesLatex('\\mug');
+    assertParsesLatex('\\mus');
+    assertParsesLatex('\\mum');
+    assertParsesLatex('\\muL');
     assertParsesLatex('\\underset{under}{over}');
     assertParsesLatex('\\underset{\\sim }{over}');
     assertParsesLatex('\\xrightarrow{over}');
