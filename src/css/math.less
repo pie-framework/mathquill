@@ -1,8 +1,11 @@
-.mq-root-block, .mq-math-mode .mq-root-block {
+.mq-root-block,
+.mq-math-mode .mq-root-block {
   .inline-block;
   width: 100%;
   padding: 2px;
-  .box-sizing(border-box); // supported by IE8+: http://caniuse.com/css3-boxsizing
+  .box-sizing(
+    border-box
+  ); // supported by IE8+: http://caniuse.com/css3-boxsizing
   white-space: nowrap;
   overflow: hidden;
   vertical-align: middle;
@@ -15,14 +18,17 @@
   line-height: 1;
 
   .inline-block;
-  .mq-non-leaf, .mq-scaled {
+  .mq-non-leaf,
+  .mq-scaled {
     .inline-block;
   }
 
   // TODO: dasherize non-symbola
-  var, .mq-text-mode, .mq-nonSymbola {
+  var,
+  .mq-text-mode,
+  .mq-nonSymbola {
     font-family: @times;
-    line-height: .9;
+    line-height: 0.9;
   }
 
   * {
@@ -50,9 +56,9 @@
   }
 
   .mq-text-mode.mq-hasCursor {
-    box-shadow: inset darkgray 0 .1em .2em;
-    padding: 0 .1em;
-    margin: 0 -.1em;
+    box-shadow: inset darkgray 0 0.1em 0.2em;
+    padding: 0 0.1em;
+    margin: 0 -0.1em;
 
     min-width: 1ex;
   }
@@ -67,11 +73,14 @@
   }
 
   // TODO [Han]: Why do we have to special-case .font?
-  b, b.mq-font {
+  b,
+  b.mq-font {
     font-weight: bolder;
   }
 
-  var, i, i.mq-font {
+  var,
+  i,
+  i.mq-font {
     font-style: italic;
   }
 
@@ -91,21 +100,21 @@
   .mq-int {
     > big {
       display: inline-block;
-      .transform(scaleX(.7));
-      vertical-align: -.16em;
+      .transform(scaleX(0.7));
+      vertical-align: -0.16em;
     }
 
     > .mq-supsub {
       font-size: 80%;
       vertical-align: -1.1em;
-      padding-right: .2em;
+      padding-right: 0.2em;
 
       > .mq-sup > .mq-sup-inner {
         vertical-align: 1.3em;
       }
 
       > .mq-sub {
-        margin-left: -.35em;
+        margin-left: -0.35em;
       }
     }
   }
@@ -146,7 +155,7 @@
         top: -0.562em;
         right: -0.4em;
         font-size: 0.75em;
-        font-family: 'LearnosityIconsRegular';
+        font-family: "LearnosityIconsRegular";
         line-height: 1em;
         text-align: right;
       }
@@ -157,13 +166,13 @@
         top: -0.562em;
         left: -0.4em;
         font-size: 0.75em;
-        font-family: 'LearnosityIconsRegular';
+        font-family: "LearnosityIconsRegular";
         line-height: 1em;
         text-align: left;
       }
     }
   }
- .mq-overline .mq-overline-inner {
+  .mq-overline .mq-overline-inner {
     display: inline-block;
     padding-top: 0.2em;
     border-top: 0.14em solid #4d4d4d;
@@ -198,16 +207,15 @@
 
     .mq-longdiv-inner {
       font-size: 1em;
-      border-top: 1px solid $Grey7;
+      border-top: 1px solid grey;
       border-radius: 0px 0px 0px 10px;
       min-width: 1em;
       text-align: center;
       padding-left: 0.2em;
       margin-left: -0.2em;
-      margin-top: 0.15em;
       margin-right: 0.15em;
-      padding-top: .19em;
-      padding-left: .44em;
+      padding-top: 0.19em;
+      padding-left: 0.44em;
       display: inline;
 
       .mq-empty {
@@ -225,17 +233,17 @@
   }
   .mq-overarc {
     border-top: 1px solid black;
-    -webkit-border-top-right-radius: 50% .3em;
-    -moz-border-radius-topright: 50% .3em;
-    border-top-right-radius: 50% .3em;
-    -webkit-border-top-left-radius: 50% .3em;
-    -moz-border-radius-topleft: 50% .3em;
-    border-top-left-radius: 50% .3em;
+    -webkit-border-top-right-radius: 50% 0.3em;
+    -moz-border-radius-topright: 50% 0.3em;
+    border-top-right-radius: 50% 0.3em;
+    -webkit-border-top-left-radius: 50% 0.3em;
+    -moz-border-radius-topleft: 50% 0.3em;
+    border-top-left-radius: 50% 0.3em;
     margin-top: 1px;
     padding-top: 0.15em;
   }
 
-.mq-overarrow {
+  .mq-overarrow {
     margin-top: 0.35em;
     position: relative;
 
@@ -260,7 +268,7 @@
         top: -0.562em;
         right: -0.4em;
         font-size: 0.75em;
-        font-family: 'LearnosityIconsRegular';
+        font-family: "LearnosityIconsRegular";
         line-height: 1em;
         text-align: right;
       }
@@ -271,7 +279,7 @@
         top: -0.562em;
         left: -0.4em;
         font-size: 0.75em;
-        font-family: 'LearnosityIconsRegular';
+        font-family: "LearnosityIconsRegular";
         line-height: 1em;
         text-align: left;
       }
@@ -312,7 +320,7 @@
         top: -2.3em;
         font-size: 0.5em;
         line-height: 0em;
-        content: '\27A4';
+        content: "\27A4";
         visibility: visible; //must override .mq-editable-field.mq-empty:after
         text-align: right;
       }
@@ -347,7 +355,7 @@
       font-size: 0.6em;
       height: 1em;
       bottom: -0.62em;
-      content: '\27A4';
+      content: "\27A4";
       right: -0.3em;
     }
 
@@ -383,10 +391,10 @@
   .mq-supsub {
     text-align: left;
     font-size: 90%;
-    vertical-align: -.5em;
+    vertical-align: -0.5em;
 
     &.mq-sup-only {
-      vertical-align: .5em;
+      vertical-align: 0.5em;
 
       .mq-sup {
         display: inline-block;
@@ -404,7 +412,7 @@
     }
 
     .mq-binary-operator {
-      padding: 0 .1em;
+      padding: 0 0.1em;
     }
 
     // special styles for fractions
@@ -417,27 +425,29 @@
   sup.mq-nthroot {
     font-size: 80%;
     vertical-align: 0.8em;
-    margin-right: -.6em;
-    margin-left: .2em;
-    min-width: .5em;
+    margin-right: -0.6em;
+    margin-left: 0.2em;
+    min-width: 0.5em;
   }
 
   ////
   // parentheses
   .mq-paren {
-    padding: 0 .1em;
+    padding: 0 0.1em;
     vertical-align: top;
-    -webkit-transform-origin: center .06em;
-    -moz-transform-origin: center .06em;
-    -ms-transform-origin: center .06em;
-    -o-transform-origin: center .06em;
-    transform-origin: center .06em;
+    -webkit-transform-origin: center 0.06em;
+    -moz-transform-origin: center 0.06em;
+    -ms-transform-origin: center 0.06em;
+    -o-transform-origin: center 0.06em;
+    transform-origin: center 0.06em;
 
-    &.mq-ghost { color: silver; }
+    &.mq-ghost {
+      color: silver;
+    }
 
     + span {
-      margin-top: .1em;
-      margin-bottom: .1em;
+      margin-top: 0.1em;
+      margin-bottom: 0.1em;
     }
   }
 
@@ -455,14 +465,15 @@
   // like \sin, \cos, \ln, etc.
   .mq-operator-name {
     font-family: Symbola, "Times New Roman", serif;
-    line-height: .9;
+    line-height: 0.9;
     font-style: normal;
   }
   var.mq-operator-name.mq-first {
-    padding-left: .2em;
+    padding-left: 0.2em;
   }
-  var.mq-operator-name.mq-last, .mq-supsub.mq-after-operator-name {
-    padding-right: .2em;
+  var.mq-operator-name.mq-last,
+  .mq-supsub.mq-after-operator-name {
+    padding-right: 0.2em;
   }
 
   ////
@@ -474,18 +485,23 @@
   .mq-fraction {
     font-size: 90%;
     text-align: center;
-    vertical-align: -.4em;
-    padding: 0 .2em;
+    vertical-align: -0.4em;
+    padding: 0 0.2em;
   }
 
   // Firefox 2 (and older?) only
   // because display:inline-block is FUBAR in Gecko < 1.9.0
-  .mq-fraction, .mq-large-operator, x:-moz-any-link {
+  .mq-fraction,
+  .mq-large-operator,
+  x:-moz-any-link {
     display: -moz-groupbox;
   }
 
   // Firefox 3+ (Gecko 1.9.0+)
-  .mq-fraction, .mq-large-operator, x:-moz-any-link, x:default {
+  .mq-fraction,
+  .mq-large-operator,
+  x:-moz-any-link,
+  x:default {
     display: inline-block;
   }
 
@@ -493,20 +509,25 @@
     line-height: 0.6em;
   }
 
-  .mq-numerator, .mq-denominator, .mq-dot-recurring, .mq-over, .mq-under {
+  .mq-numerator,
+  .mq-denominator,
+  .mq-dot-recurring,
+  .mq-over,
+  .mq-under {
     display: block;
   }
 
-  .mq-numerator, .mq-over {
+  .mq-numerator,
+  .mq-over {
     padding: 0 0.1em;
-    margin-bottom: .2em;
+    margin-bottom: 0.2em;
   }
 
   .mq-denominator {
     border-top: 1px solid;
     float: right; // take out of normal flow to manipulate baseline
     width: 100%;
-    padding: .3em 0.1em 0.1em;
+    padding: 0.3em 0.1em 0.1em;
   }
 
   .mq-dot-recurring {
@@ -519,7 +540,7 @@
   .mq-overunder {
     text-align: center;
     position: relative;
-    top: .01em;
+    top: 0.01em;
 
     // fix \mathbf vertical alignment issue
     .mq-font {
@@ -530,7 +551,8 @@
       vertical-align: text-top;
     }
 
-    &.mq-underset .mq-under, &.mq-overset .mq-over {
+    &.mq-underset .mq-under,
+    &.mq-overset .mq-over {
       display: block;
       font-size: 0.7em;
     }
@@ -550,16 +572,16 @@
   .mq-sqrt-stem {
     border-top: 1px solid;
     margin-top: 1px;
-    padding-left: .15em;
-    padding-right: .2em;
-    margin-right: .1em;
+    padding-left: 0.15em;
+    padding-right: 0.2em;
+    margin-right: 0.1em;
     padding-top: 1px;
   }
 
   .mq-diacritic-above {
     display: block;
     text-align: center;
-    line-height: .4em;
+    line-height: 0.4em;
   }
 
   .mq-diacritic-stem {
@@ -570,8 +592,8 @@
   .mq-hat-prefix {
     display: block;
     text-align: center;
-    line-height: .95em;
-    margin-bottom: -.7em;
+    line-height: 0.95em;
+    margin-bottom: -0.7em;
     transform: scaleX(1.5);
     -moz-transform: scaleX(1.5);
     -o-transform: scaleX(1.5);
@@ -583,15 +605,18 @@
   }
 
   .mq-large-operator {
-    vertical-align: -.2em;
-    padding: .2em;
+    vertical-align: -0.2em;
+    padding: 0.2em;
     text-align: center;
     vertical-align: middle;
 
-    .mq-from, big, .mq-to  {
+    .mq-from,
+    big,
+    .mq-to {
       display: block;
     }
-    .mq-from, .mq-to  {
+    .mq-from,
+    .mq-to {
       font-size: 80%;
     }
     .mq-from {
@@ -603,15 +628,15 @@
   .mq-lim {
     text-align: center;
 
-    span  {
+    span {
       display: block;
     }
-    .mq-approaches  {
+    .mq-approaches {
       font-size: 80%;
       float: right; /* take out of normal flow to manipulate baseline */
       width: 100%;
       span > span {
-          display: inline;
+        display: inline;
       }
     }
   }
@@ -626,7 +651,8 @@
       border-bottom: none;
       border-spacing: 3px;
       border-collapse: separate;
-      &.mq-rows-1 { /* better alignment when there's just one row */
+      &.mq-rows-1 {
+        /* better alignment when there's just one row */
         vertical-align: middle;
         margin-bottom: 1px;
       }
@@ -644,7 +670,8 @@
     }
   }
 
-  &, .mq-editable-field {
+  &,
+  .mq-editable-field {
     cursor: text;
     font-family: @symbola;
   }
@@ -676,7 +703,8 @@
     }
   }
 
-  &, .mq-editable-field {
+  &,
+  .mq-editable-field {
     cursor: text;
     font-family: @symbola;
 
@@ -689,7 +717,7 @@
 }
 
 .mq-overarrow {
-  min-width: .5em;
+  min-width: 0.5em;
   border-top: 1px solid black;
   margin-top: 1px;
   padding-top: 0.2em;
@@ -701,7 +729,7 @@
     top: -0.34em;
     font-size: 0.5em;
     line-height: 0em;
-    content: '\27A4';
+    content: "\27A4";
     text-align: right;
   }
   &.mq-arrow-left:before {
@@ -722,7 +750,7 @@
         top: -0.34em;
       }
     }
-    &:before{
+    &:before {
       -moz-transform: scaleX(-1);
       -o-transform: scaleX(-1);
       -webkit-transform: scaleX(-1);
@@ -736,7 +764,7 @@
       top: -2.3em;
       font-size: 0.5em;
       line-height: 0em;
-      content: '\27A4';
+      content: "\27A4";
       visibility: visible; //must override .mq-editable-field.mq-empty:after
       text-align: right;
     }
