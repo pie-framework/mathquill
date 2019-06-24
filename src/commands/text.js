@@ -98,7 +98,10 @@ var TextBlock = P(Node, function(_, super_) {
 
     if (ch !== '$') {
       if (!cursor[L]) TextPiece(ch).createLeftOf(cursor);
-      else cursor[L].appendText(ch);
+      else {
+        cursor[L].appendText(ch);
+        this.bubble('reflow');
+      }
     }
     else if (this.isEmpty()) {
       cursor.insRightOf(this);
