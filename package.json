@@ -15,7 +15,8 @@
     "build/mathquill.{css,js,min.js}",
     "build/fonts/Symbola.*",
     "build/index-dev.js",
-    "build/*.js"
+    "build/index.js",
+    "build/jquery.global.js"
   ],
   "dependencies": {
     "jquery": "^3.3.1"
