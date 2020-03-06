@@ -1,3 +1,5 @@
 import jQuery from "jquery";
-window.jQuery = jQuery;
+if (!window.jQuery) {
+  window.jQuery = jQuery;
+}
 export default jQuery;

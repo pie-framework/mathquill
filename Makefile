@@ -104,7 +104,7 @@ BUILD_DIR_EXISTS = $(BUILD_DIR)/.exists--used_by_Makefile
 #
 
 .PHONY: all basic dev js uglify css font clean 
-all: font css uglify es
+all: font css uglify cjs 
 basic: $(UGLY_BASIC_JS) $(BASIC_CSS)
 # dev is like all, but without minification
 dev: font css js
@@ -116,10 +116,10 @@ font: $(FONT_TARGET)
 # 	cp -rv webpack/index.js build/index.js
 # 	cp -rv webpack/index-dev.js build/index-dev.js
 
-es: 
-	cp -rv esm/index.js build/index.js
-	cp -rv esm/index-dev.js build/index-dev.js
-	cp -rv esm/jquery.global.js build/jquery.global.js
+cjs: 
+	cp -rv cjs/index.js build/index.js
+	cp -rv cjs/index-dev.js build/index-dev.js
+	cp -rv cjs/jquery.global.js build/jquery.global.js
 
 clean:
 	rm -rf $(BUILD_DIR)
