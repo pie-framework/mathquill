@@ -1,7 +1,7 @@
 {
   "name": "@pie-framework/mathquill",
   "description": "A fork of mathquill that works with common js: Easily type math in your webapp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publishConfig": {
     "access": "public"
   },
@@ -15,8 +15,7 @@
     "build/mathquill.{css,js,min.js}",
     "build/fonts/Symbola.*",
     "build/index-dev.js",
-    "build/index.js",
-    "build/jquery.global.js"
+    "build/*.js"
   ],
   "dependencies": {
     "jquery": "^3.3.1"
