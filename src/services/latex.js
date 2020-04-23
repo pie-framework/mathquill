@@ -1,3 +1,5 @@
+var EXTRA_SLASHES_REGEX = /[\\]{2,}/gm;
+
 // Parser MathBlock
 var latexMathParser = (function() {
   function commandToBlock(cmd) {
@@ -133,6 +135,10 @@ Controller.open(function(_, super_) {
     return this;
   };
   _.renderLatexMath = function(latex) {
+    if (latex) {
+      latex = latex.replace(EXTRA_SLASHES_REGEX, '\\');
+    }
+
     var root = this.root;
     var cursor = this.cursor;
     var options = cursor.options;
