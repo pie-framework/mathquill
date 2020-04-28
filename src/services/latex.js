@@ -135,8 +135,8 @@ Controller.open(function(_, super_) {
     return this;
   };
   _.renderLatexMath = function(latex) {
-    if (latex) {
-      latex = latex.replace(EXTRA_SLASHES_REGEX, '\\');
+    if (latex && latex.replace) {
+      latex = latex.replace(EXTRA_SLASHES_REGEX, '\\')
     }
 
     var root = this.root;

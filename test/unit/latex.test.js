@@ -245,6 +245,23 @@ suite("latex", function() {
         );
       });
 
+      test("extra slashes rendering", function() {
+        assertParsesLatex(
+          "x = \\\\\\\\frac{ -b \\\\\\\\pm \\\\\\\\sqrt{ b^2 - 4ac } }{ 2a }",
+          "x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}"
+        );
+
+        assertParsesLatex(
+          "\\\\\\\\\\text{$}",
+          "\\text{$}"
+        );
+
+        assertParsesLatex(
+          "\\\\\\\\\\text{$}",
+          "\\text{$}"
+        );
+      });
+
       test("re-rendering", function() {
         assertParsesLatex("a x^2 + b x + c = 0", "ax^2+bx+c=0");
         assertParsesLatex(
