@@ -34,6 +34,8 @@ Controller.open(function(_) {
         else return;
       }
     }
-    this.root.jQ.stop().animate({ scrollLeft: '+=' + scrollBy}, 100);
+    if (this.root.jQ.stop && typeof this.root.jQ.stop === 'function') {
+      this.root.jQ.stop().animate({ scrollLeft: '+=' + scrollBy}, 100);
+    }
   };
 });
