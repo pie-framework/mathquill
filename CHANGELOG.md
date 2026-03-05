@@ -1,3 +1,35 @@
+## Interface v3: jQuery Independence (pie-framework fork)
+
+_2026-03-05_
+
+This version adds support for Interface v3, which removes the dependency on jQuery.
+This implementation maintains full backward compatibility with Interface v1 and v2.
+
+**breaking changes (Interface v3 only):**
+- `.revert()` now returns an HTML element rather than a jQuery collection
+- Interface v1 and v2 still require jQuery to be loaded
+- Interface v3 does not require jQuery
+
+**migration guide:**
+```javascript
+// Interface v2 (requires jQuery)
+var MQ = MathQuill.getInterface(2);
+var mathField = MQ.MathField($('#math-input')[0]);
+var $el = mathField.revert(); // Returns jQuery object
+
+// Interface v3 (no jQuery required)
+var MQ = MathQuill.getInterface(3);
+var mathField = MQ.MathField(document.getElementById('math-input'));
+var el = mathField.revert(); // Returns HTML element
+```
+
+**notes:**
+- All pie-framework customizations (response containers, custom symbols, matrices) are preserved
+- Unit tests updated to support Interface v3
+- No changes required for projects using Interface v1 or v2
+
+---
+
 ## v0.10.1: Fix `font-size: 0` typing problems and more
 
 _2016-03-21_

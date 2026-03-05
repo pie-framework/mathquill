@@ -60,7 +60,7 @@ MathQuill.interfaceVersion = function(v) {
 MathQuill.getInterface = getInterface;
 
 var MIN = (getInterface.MIN = 1),
-  MAX = (getInterface.MAX = 2);
+  MAX = (getInterface.MAX = 3);
 function getInterface(v) {
   if (!(MIN <= v && v <= MAX))
     throw "Only interface versions between " +
@@ -69,6 +69,14 @@ function getInterface(v) {
       MAX +
       " supported. You specified: " +
       v;
+
+  // Interface v3 does not require jQuery
+  // Interface v1 and v2 require jQuery to be loaded
+  if (v < 3) {
+    if (typeof window !== 'undefined' && !window.jQuery) {
+      throw "MathQuill interface version " + v + " requires jQuery 1.5.2+ to be loaded first";
+    }
+  }
 
   /**
    * Function that takes an HTML element and, if it's the root HTML element of a
@@ -147,11 +155,13 @@ function getInterface(v) {
       this.latex(contents.text());
 
       this.revert = function() {
-        return el
+        var result = el
           .empty()
           .unbind(".mathquill")
           .removeClass("mq-editable-field mq-math-mode mq-text-mode")
           .append(contents);
+        // Interface v3 returns HTML element; v1 and v2 return jQuery object
+        return v >= 3 ? result[0] : result;
       };
     };
     _.config = function(opts) {

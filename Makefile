@@ -16,8 +16,9 @@ ifneq ($(shell node -e 'console.log("I am Node.js")'), I am Node.js)
 endif
 
 # stupid GNU vs BSD https://github.com/mathquill/mathquill/pull/653/commits/4332b0e97a92fb1362123a06b68fa49d9efb6f38#r68305423
-ifeq (x, $(shell echo xy | sed -r 's/(x)y/\1/' 2>/dev/null))
-  SED_IN_PLACE = sed -i    # GNU
+# Use --version to detect GNU sed (BSD sed doesn't support --version)
+ifeq ($(shell sed --version >/dev/null 2>&1 && echo gnu), gnu)
+  SED_IN_PLACE = sed -i # GNU
 else
   SED_IN_PLACE = sed -i '' # BSD
 endif
