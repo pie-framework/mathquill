@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ESM Build Test</title>
+  <link rel="stylesheet" href="build/mathquill.css">
+</head>
+<body>
+  <h1>ESM Build Test</h1>
+  <p>If you see "✅ Test passed" below, $(el).children() works.</p>
+  <span id="math-input"></span>
+  <pre id="result"></pre>
+
+  <script type="module">
+    const resultEl = document.getElementById('result');
+    try {
+      const MathQuill = (await import('./build/mathquill.esm.js')).default;
+      const MQ = MathQuill.getInterface(3);
+      const span = document.getElementById('math-input');
+
+      const mathField = MQ.MathField(span, {});
+      const latex = mathField.latex();
+
+      resultEl.textContent = '✅ Test passed: MQ.MathField(span) works, $(el).children() did not throw\n   Initial latex: ' + JSON.stringify(latex);
+      resultEl.style.color = 'green';
+    } catch (err) {
+      resultEl.textContent = '❌ Test failed: ' + err.message;
+      resultEl.style.color = 'red';
+      if (err.message.includes('children')) {
+        resultEl.textContent += '\n\nThis is the "$(...).children is not a function" error';
+      }
+    }
+  </script>
+</body>
+</html>

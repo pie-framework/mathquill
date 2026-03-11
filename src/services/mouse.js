@@ -96,8 +96,7 @@ Controller.open(function(_) {
         nodeId = targetParent.attr(mqBlockId) || targetParent.attr(mqCmdId);
       }
     }
-    var node = nodeId ? Node.byId[nodeId] : this.root;
-    pray('nodeId is the id of some Node that exists', node);
+    var node = (nodeId && Node.byId[nodeId]) ? Node.byId[nodeId] : this.root;
 
     // don't clear selection until after getting node from target, in case
     // target was selection span, otherwise target will have no parent and will

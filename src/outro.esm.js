@@ -1,5 +1,6 @@
 // ESM Build - export MathQuill as default export
-var MQ1 = getInterface(1);
+// Use Interface 3 (jQuery-free) since ESM build includes the shim
+var MQ1 = getInterface(3);
 for (var key in MQ1) (function(key, val) {
   if (typeof val === 'function') {
     MathQuill[key] = function() {

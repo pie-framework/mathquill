@@ -199,6 +199,15 @@ var Node = P(function(_) {
 
 function prayWellFormed(parent, leftward, rightward) {
   pray('a parent is always present', parent);
+  // Repair broken sibling/parent links (can happen with shim edge cases / rapid updates)
+  if (leftward) {
+    if (leftward[R] !== rightward) leftward[R] = rightward;
+    if (leftward.parent !== parent) leftward.parent = parent;
+  }
+  if (rightward) {
+    if (rightward[L] !== leftward) rightward[L] = leftward;
+    if (rightward.parent !== parent) rightward.parent = parent;
+  }
   pray('leftward is properly set up', (function() {
     // either it's empty and `rightward` is the left end child (possibly empty)
     if (!leftward) return parent.ends[L] === rightward;

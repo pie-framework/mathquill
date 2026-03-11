@@ -61,6 +61,7 @@ var Cursor = P(Point, function(_) {
   };
   _.insDirOf = function(dir, el) {
     prayDirection(dir);
+    if (!el || !el.jQ) return this;
     this.jQ.insDirOf(dir, el.jQ);
     this.withDirInsertAt(dir, el.parent, el[dir], el);
     this.parent.jQ.addClass('mq-hasCursor');
@@ -171,17 +172,19 @@ var Cursor = P(Point, function(_) {
   };
   _.select = function() {
     var anticursor = this.anticursor;
+    if (!anticursor || !anticursor.ancestors) return false;
     if (this[L] === anticursor[L] && this.parent === anticursor.parent) return false;
 
     // Find the lowest common ancestor (`lca`), and the ancestor of the cursor
     // whose parent is the LCA (which'll be an end of the selection fragment).
+    var lca;
     for (var ancestor = this; ancestor.parent; ancestor = ancestor.parent) {
       if (ancestor.parent.id in anticursor.ancestors) {
-        var lca = ancestor.parent;
+        lca = ancestor.parent;
         break;
       }
     }
-    pray('cursor and anticursor in the same tree', lca);
+    if (!lca) return false; // cursor and anticursor in different trees (e.g. cross-field drag)
     // The cursor and the anticursor should be in the same tree, because the
     // mousemove handler attached to the document, unlike the one attached to
     // the root HTML DOM element, doesn't try to get the math tree node of the
@@ -226,6 +229,7 @@ var Cursor = P(Point, function(_) {
     // only want to select Nodes up to Points, can't select Points themselves
     if (leftEnd instanceof Point) leftEnd = leftEnd[R];
     if (rightEnd instanceof Point) rightEnd = rightEnd[L];
+    if (!leftEnd || !rightEnd) return false; // empty boundary - can't form fragment
 
     this.hide().selection = lca.selectChildren(leftEnd, rightEnd);
     this.insDirOf(dir, this.selection.ends[dir]);
@@ -296,7 +300,8 @@ var Selection = P(Fragment, function(_, super_) {
   _.clear = function() {
     // using the browser's native .childNodes property so that we
     // don't discard text nodes.
-    this.jQ.replaceWith(this.jQ[0].childNodes);
+    var first = this.jQ[0];
+    if (first) this.jQ.replaceWith(first.childNodes);
     return this;
   };
   _.join = function(methodName) {

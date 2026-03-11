@@ -45,7 +45,16 @@ let content = sources.map((file) => {
   const fullPath = path.join(__dirname, '..', file);
   if (fs.existsSync(fullPath)) {
     console.log(`  - ${file}`);
-    return fs.readFileSync(fullPath, 'utf-8');
+    let fileContent = fs.readFileSync(fullPath, 'utf-8');
+    // ESM build: skip P.js extension of $. The shim already has insDirOf/insAtDirEnd
+    // on DOMCollection.prototype. P.js returns instances that break .children() etc.
+    if (file === './src/tree.js') {
+      fileContent = fileContent.replace(
+        /var \$ = P\(jQuery, function\(_\) \{\s*\n\s*_.insDirOf = function\(dir, el\) \{\s*\n\s*return dir === L \?\s*\n\s*this\.insertBefore\(el\.first\(\)\) : this\.insertAfter\(el\.last\(\)\);\s*\n\s*};\s*\n\s*_.insAtDirEnd = function\(dir, el\) \{\s*\n\s*return dir === L \? this\.prependTo\(el\) : this\.appendTo\(el\);\s*\n\s*};\s*\n\}\);/,
+        '// ESM: $ from shim has insDirOf/insAtDirEnd on prototype, skip P.js'
+      );
+    }
+    return fileContent;
   } else {
     console.warn(`  ! Missing: ${file}`);
     return '';
@@ -54,6 +63,9 @@ let content = sources.map((file) => {
 
 // Replace version placeholder
 content = content.replace(/{VERSION}/g, `v${VERSION}`);
+
+// Prepend CSS import - old CJS build loaded it via require(), ESM needs explicit import
+content = "import './mathquill.css';\n\n" + content;
 
 // Write output
 const outputPath = path.join(__dirname, '../build/mathquill.esm.js');
