@@ -37,11 +37,19 @@ DOMCollection.prototype.removeClass = function(className) {
   return this;
 };
 
-DOMCollection.prototype.toggleClass = function(className) {
+// jQuery: .toggleClass(name) flips; .toggleClass(name, state) forces on/off.
+// MathQuill relies on the two-arg form in Letter.italicize (mq-operator-name)
+// and elsewhere; ignoring `state` broke operator vs variable styling (ESM build).
+DOMCollection.prototype.toggleClass = function(className, state) {
   var classes = (className || '').split(/\s+/).filter(Boolean);
+  var force = arguments.length > 1 ? !!state : null;
   this.elements.forEach(function(el) {
     classes.forEach(function(c) {
-      el.classList.toggle(c);
+      if (force === null) {
+        el.classList.toggle(c);
+      } else {
+        el.classList.toggle(c, force);
+      }
     });
   });
   return this;
