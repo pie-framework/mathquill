@@ -457,6 +457,11 @@ DOMCollection.prototype.add = function(other) {
   var combined = this.elements.slice();
   if (other instanceof DOMCollection) {
     combined.push.apply(combined, other.elements);
+  } else if (Array.isArray(other)) {
+    // Fragment() accumulates raw elements then does this.jQ.add(accum); jQuery accepts
+    // an array of nodes. Without this branch, LiveFraction (/) never moves the wrapped
+    // operand into the numerator in the DOM.
+    combined.push.apply(combined, other);
   } else if (other && other.nodeType) {
     combined.push(other);
   }
